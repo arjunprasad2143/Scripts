@@ -21,9 +21,9 @@ def client_connection(ES_ENDPOINT):
 def snap_restore(ES_ENDPOINT,SNAPSHOT_PATH):
     client = client_connection(ES_ENDPOINT)
     print "Delete the all the indices..."
-    #resp = client.make_request(method='DELETE', path='/_all')
-    #body = resp.read()
-    #print body
+    resp = client.make_request(method='DELETE', path='/_all')
+    body = resp.read()
+    print body
     print "Restore the snapshot: " + SNAPSHOT_PATH
     RESTORE_PATH = SNAPSHOT_PATH + "/_restore"
     resp = client.make_request(method='POST', path=RESTORE_PATH,
@@ -33,9 +33,9 @@ def snap_restore(ES_ENDPOINT,SNAPSHOT_PATH):
 
 def snap_status(ES_ENDPOINT,SNAPSHOT_PATH):
     client = client_connection(ES_ENDPOINT)
-    #resp = client.make_request(method='GET', path=SNAPSHOT_PATH)
-    #body = resp.read()
-    #print body
+    resp = client.make_request(method='GET', path=SNAPSHOT_PATH)
+    body = resp.read()
+    print body
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(description='To take the snapshot of the ES domains and check of the status')

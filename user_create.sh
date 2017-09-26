@@ -30,7 +30,7 @@ sudo mkdir -p /home/${user_name}/.ssh/
      sudo echo "${public_key}" > /home/${user_name}/.ssh/authorized_keys
      sudo chmod 600 /home/${user_name}/.ssh/authorized_keys
      sudo chown -R ${user_name}:${user_group} /home/${user_name}/
-     sudo cp /home/bbadmin/.bashrc /home/${user_name}/
+     sudo cp /home/admin/.bashrc /home/${user_name}/
   else
      echo "Failed to add a user!"
   fi

@@ -3,7 +3,7 @@
 # UNCOMMENT this line to enable debugging
 # set -xv
 
-## Get resources requests and limits per container in a Kubernetes cluster.
+## Get resources requests and limits per container in an openshift cluster.
 
 OUT=resources.csv
 NAMESPACE=--all-namespaces
@@ -22,7 +22,7 @@ errorExit () {
 usage () {
     cat << END_USAGE
 
-${SCRIPT_NAME} - Extract resource requests and limits in a Kubernetes cluster for a selected namespace or all namespaces in a CSV format
+${SCRIPT_NAME} - Extract resource requests and limits in an openshift cluster for a selected namespace or all namespaces in a CSV format
 
 Usage: ${SCRIPT_NAME} <options>
 
@@ -80,7 +80,7 @@ processOptions () {
     done
 }
 
-# Test connection to a cluster by kubectl
+# Test connection to a cluster by oc command
 testConnection () {
     oc cluster-info > /dev/null || errorExit "Connection to cluster failed"
 }
@@ -114,8 +114,8 @@ getRequestsAndLimits () {
     local data=
     local namespace=
     local pod=
-    local container=
     local node=
+    local container=
     local cpu_request=
     local mem_request=
     local cpu_limit=
